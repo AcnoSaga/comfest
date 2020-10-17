@@ -1,0 +1,80 @@
+body {
+  background-color: #251d33;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #555555;
+  font-family: "Bebas Neue";
+}
+.cbody {
+  height: 375px;
+  width: 1000px;
+  background-color: #f4e08e;
+  border-radius: 20px;
+}
+
+.cinbody {
+  padding: 20px;
+}
+
+.line-1 {
+  margin-top: -40px;
+  display: flex;
+  width: 100%;
+}
+.plus {
+  width: 100%;
+}
+.line-1 h1 {
+  cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 50px;
+  text-align: right;
+}
+.line-2 {
+  display: flex;
+  width: 100%;
+  padding: 30px;
+  margin-top: -30px;
+}
+.wimg {
+  width: 15%;
+}
+.line-2 img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.wtext {
+  width: 70%;
+  margin-left: 50px;
+  text-align: left;
+}
+.wtext h3 {
+  font-size: 30px;
+}
+.line-3 {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  margin: 0 auto;
+}
+.worker-pno {
+  width: 50%;
+  text-align: left;
+}
+.line-3 h2 {
+  font-size: 30px;
+}
+
+.worker-location {
+  width: 50%;
+  text-align: right;
+}
+.line-3 h3 {
+  font-size: 30px;
+}
