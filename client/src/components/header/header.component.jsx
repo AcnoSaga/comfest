@@ -1,9 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { createStructuredSelector } from "reselect";
 import Logo from "../../assets/logo.png";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
 import "./header.component.styles.css";
 
-function Header() {
+function Header({ currentUser }) {
   return (
     <div id="header">
       <Link to="/" className="logo">
@@ -34,4 +37,8 @@ function Header() {
   );
 }
 
-export default Header;
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
+
+export default connect(mapStateToProps)(Header);

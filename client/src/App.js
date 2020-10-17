@@ -7,6 +7,7 @@ import HomePage from "./pages/homepage/homepage.component";
 import WorkPage from "./pages/workpage/workpage.component";
 import JobsPage from "./pages/jobspage/jobspage.component";
 import RegisterPage from "./pages/register/register.component";
+import TeamPage from "./pages/teampage/teampage.component";
 import Header from "./components/header/header.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
@@ -45,6 +46,7 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/team" component={TeamPage} />
           <Route exact path="/work" component={WorkPage} />
           <Route exact path="/myjobs" component={JobsPage} />
           <Route path="/account" component={RegisterPage} />

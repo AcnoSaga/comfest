@@ -31,8 +31,13 @@ function HomePage() {
         <h1>How We can Help?</h1>
 
         <div className="boxes2">
-          <div class="box-3"></div>
-          <div class="box-4"></div>
+          <h3>
+            Workerge connects workers with employers seamlessly and helps them
+            get employed in these turbulent times. This platform allows workers
+            to explore a large pool of work requirements and choose what suits
+            them best. It strives to be a reliable source of work for people who
+            want a better work-finding experience.
+          </h3>
         </div>
       </section>
       <section class="footer">
