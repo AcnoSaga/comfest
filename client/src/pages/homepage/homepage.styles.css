@@ -97,9 +97,9 @@ h4 {
 }
 .boxes2 {
   display: flex;
-  padding: 30px;
+  padding: 50px 150px;
   justify-content: center;
-  align-items: center;
+  text-align: center;
   flex-wrap: wrap;
   width: 100%;
 }
