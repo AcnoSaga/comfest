@@ -1,0 +1,58 @@
+body{
+    background-color: #251D33;
+}
+
+h1,h2,h3,h4 {
+    color: #555555;
+    font-family: 'Bebas Neue';
+    src: url(font/BEBASNEUE.otf);
+    }
+.cbody{
+    height: 375px;
+    width: 1000px;
+    background-color: #F4E08E;
+    border-radius: 20px;
+}
+.cinbody{
+    padding: 20px;
+}
+.line-1{
+    margin-top: -40px;
+    display: flex;
+    width: 100%;
+}
+.occupation{
+    width: 50%;
+}
+.plus{
+    width: 50%;
+}
+.line-1 h3{
+font-size: 40px;
+text-align: left;
+}
+.line-1 h1{
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    text-align: right;
+}
+.line-2 h3{
+    font-size: 17px;
+}
+.line-3 {
+    display: flex;
+    width: 100%;
+}
+.amount{
+    text-align: left;
+    width: 50%;
+}
+.location{
+    
+    text-align: right;
+    width: 50%;
+}
+.line-3 h3 {
+    font-size: 25px ;
+}

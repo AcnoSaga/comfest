@@ -4,6 +4,7 @@ import React from "react";
 // import CustomButton from "../custom-button/custom-button.component";
 
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
+import { cities } from "../../utils/cities";
 
 // import { SignUpContainer, SignUpTitle } from "./sign-up.styles";
 
@@ -114,6 +115,24 @@ class SignUp extends React.Component {
             label="Confirm Password"
             required
           />
+          <label>Location:</label>
+          <select id="location" name="location" onChange={this.handleChange}>
+            {cities.map((city) => (
+              <option value={city}>{city}</option>
+            ))}
+          </select>
+
+          <label>Profession:</label>
+          <select
+            id="profession"
+            name="profession"
+            onChange={this.handleChange}
+          >
+            {cities.map((city) => (
+              <option value={city}>{city}</option>
+            ))}
+          </select>
+
           <button type="submit">SIGN UP</button>
         </form>
       </div>
