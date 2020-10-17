@@ -1,6 +1,13 @@
 import * as functions from 'firebase-functions';
+import { authHandler } from '../handlers/auth';
+import { stringDataValidator } from '../handlers/stringData';
 
-export const registerUser =  functions.https.onRequest((request, response) => {
-    functions.logger.info("Hello logs!", {structuredData: true});
-    response.send("Hello from Firebase!");
+export const registerUser =  functions.https.onCall(async (data, context) => {
+    try {
+        authHandler(context);
+        stringDataValidator(data.path, data.body);
+    } catch (err) {
+        throw err;
+    }
+
   });
