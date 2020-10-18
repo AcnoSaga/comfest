@@ -6,29 +6,36 @@ import {
   ModalBody,
   ModalFooter,
   Form,
+  FormGroup,
+  Label,
+  Input,
 } from "reactstrap";
+import "./jobspage.styles.css";
 
-const JobsPage = (props) => {
-  const { buttonLabel, className } = props;
-
+const JobsPage = () => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
 
   return (
-    <div>
+    <div className="create-job">
       <Button color="danger" onClick={toggle}>
-        {buttonLabel}
+        Post Job
       </Button>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
+      <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Create Job</ModalHeader>
         <ModalBody>
-          <Form></Form>
+          <Form>
+            <Label>Job Title</Label>
+            <Input />
+            <FormGroup>
+              <Label>Job Description</Label>
+              <Input type="textarea" name="text" />
+            </FormGroup>
+            <Button color="warning">Create</Button>
+          </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
-            Submit
-          </Button>
           <Button color="secondary" onClick={toggle}>
             Cancel
           </Button>

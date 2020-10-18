@@ -1,33 +1,19 @@
-import React from 'react';
-import './worker-card.styles.css';
+import React from "react";
+import "./worker-card.styles.css";
+import { Jumbotron, Button } from "reactstrap";
 
 function WorkerCard(props) {
-	return (
-		<div className='cbody'>
-			<div className='cinbody'>
-				<div className='line-1'>
-					<h1 className='plus'>+</h1>
-				</div>
-				<div className='line-2'>
-					<div className='wimg'>
-						<img alt='img' />
-					</div>
-					<div className='wtext'>
-						<h1 className='worker-name'>{props.name}</h1>
-						<h1 className='worker-profession'>
-							{props.profession}
-						</h1>
-					</div>
-				</div>
-				<div className='line-3'>
-					<h3 className='worker-pno'>
-						Contact Number:{props.phoneNumber}
-					</h3>
-					<h3 className='worker-location'>{props.location}</h3>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className="work-card">
+      <Jumbotron fluid className="worker-card">
+        <h1 className="display-3">{props.name}</h1>
+        <h2>{props.profession}</h2>
+        <hr className="my-2" />
+        <h2>Contact Number: {props.phoneNumber}</h2>
+        <h2>{props.location}</h2>
+      </Jumbotron>
+    </div>
+  );
 }
 
 export default WorkerCard;

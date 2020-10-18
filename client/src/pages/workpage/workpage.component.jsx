@@ -1,6 +1,6 @@
-import React from 'react';
-import WorkerCard from '../../components/worker-card/worker-card.component';
-import ClipLoader from 'react-spinners/ClipLoader';
+import React from "react";
+import WorkerCard from "../../components/worker-card/worker-card.component";
+import ClipLoader from "react-spinners/ClipLoader";
 import {
 	executeQueryAndReturnData,
 	firestore,
@@ -10,7 +10,7 @@ import { professions } from '../../utils/professions';
 import './workpage.styles.css';
 import { Button } from 'reactstrap';
 
-const baseQuery = firestore.collection('workers');
+const baseQuery = firestore.collection("workers");
 
 class WorkPage extends React.Component {
 	constructor() {
