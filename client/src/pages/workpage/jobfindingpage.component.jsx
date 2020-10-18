@@ -7,21 +7,22 @@ import {
 } from '../../firebase/firebase.utils';
 
 import './workpage.styles.css';
+import JobCard from '../../components/job-card/job-card.component';
 
-const baseQuery = firestore.collection('workers');
+const baseQuery = firestore.collection('jobs');
 
-class WorkPage extends React.Component {
+class JobFindingPage extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			listOfWorkers: null,
+			listOfJobs: null,
 		};
 	}
 
 	async componentDidMount() {
 		executeQueryAndReturnData(baseQuery).then((data) => {
 			this.setState({
-				listOfWorkers: data,
+				listOfJobs: data,
 			});
 		});
 	}
@@ -29,16 +30,16 @@ class WorkPage extends React.Component {
 	render() {
 		return (
 			<div className='wcard-container'>
-				{this.state.listOfWorkers == null ? (
+				{this.state.listOfJobs == null ? (
 					<ClipLoader size={150} color={'#123abc'} loading={true} />
 				) : (
-					this.state.listOfWorkers.map((worker) => {
+					this.state.listOfJobs.map((job) => {
 						return (
-							<WorkerCard
-								name={worker.displayName}
-								profession={worker.profession}
-								phoneNumber={worker.phoneNumber}
-								location={worker.location}
+							<JobCard
+								title={job.title}
+								description={job.description}
+								phoneNumber={job.phoneNumber}
+								location={job.location}
 							/>
 						);
 					})
@@ -48,4 +49,4 @@ class WorkPage extends React.Component {
 	}
 }
 
-export default WorkPage;
+export default JobFindingPage;

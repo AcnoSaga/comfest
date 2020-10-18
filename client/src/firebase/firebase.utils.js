@@ -37,7 +37,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 			});
 			if (
 				additionalData.profession !== undefined &&
-				additionalData.profession !== null
+				additionalData.profession !== null &&
+				additionalData.profession !== ''
 			) {
 				const workerRef = firestore.doc(`workers/${userAuth.uid}`);
 				await workerRef.set({
@@ -57,17 +58,24 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 export const executeQueryAndReturnData = async (query) => {
 	const queryResult = await query.get();
-	console.log();
+	console.log(await queryResult.docs.map((doc) => doc.data()));
 	return await queryResult.docs.map((doc) => doc.data());
 };
 
-export const addJobPost = async (title, description, phoneNumber, location) => {
+export const addJobPost = async (
+	title,
+	description,
+	phoneNumber,
+	location,
+	id
+) => {
 	const postRef = firestore.collection('jobs').doc();
 	await postRef.set({
 		title,
 		description,
 		phoneNumber,
 		location,
+		id,
 	});
 };
 
