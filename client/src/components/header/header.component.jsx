@@ -8,6 +8,7 @@ import './header.component.styles.css';
 
 function Header({ currentUser }) {
 	console.log(currentUser);
+
 	return (
 		<div id='header'>
 			<Link to='/' className='logo'>
@@ -48,8 +49,7 @@ function Header({ currentUser }) {
 							<Link to='/account'>Account</Link>
 						</li>
 					</div>
-					)
-          {/* } */}
+					){/* } */}
 				</ul>
 			</div>
 		</div>
