@@ -10,6 +10,7 @@ import {
   Label,
   Input,
 } from "reactstrap";
+import "./jobspage.styles.css";
 
 const JobsPage = () => {
   const [modal, setModal] = useState(false);
@@ -17,7 +18,7 @@ const JobsPage = () => {
   const toggle = () => setModal(!modal);
 
   return (
-    <div>
+    <div className="create-job">
       <Button color="danger" onClick={toggle}>
         Post Job
       </Button>
@@ -25,12 +26,13 @@ const JobsPage = () => {
         <ModalHeader toggle={toggle}>Create Job</ModalHeader>
         <ModalBody>
           <Form>
+            <Label>Job Title</Label>
             <Input />
             <FormGroup>
-              <Label for="exampleText">Job Description</Label>
-              <Input type="textarea" name="text" id="exampleText" />
+              <Label>Job Description</Label>
+              <Input type="textarea" name="text" />
             </FormGroup>
-            <Button color="warning" />
+            <Button color="warning">Create</Button>
           </Form>
         </ModalBody>
         <ModalFooter>

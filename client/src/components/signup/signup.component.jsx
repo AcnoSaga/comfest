@@ -4,6 +4,7 @@ import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 import { cities } from "../../utils/cities";
 import { professions } from "../../utils/professions";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { ImagePicker } from "react-file-picker";
 
 import "./sign-up.styles.css";
 
@@ -19,7 +20,6 @@ class SignUp extends React.Component {
       location: "",
       profession: "",
       phoneNumber: "",
-      image: null,
       fieldEnable: true,
     };
   }
@@ -35,7 +35,6 @@ class SignUp extends React.Component {
       location,
       profession,
       phoneNumber,
-      image,
     } = this.state;
 
     if (password !== confirmPassword) {
@@ -56,28 +55,25 @@ class SignUp extends React.Component {
         location,
         profession,
         phoneNumber,
-        image,
-      });
-
-      this.setState({
-        displayName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        location: "",
-        profession: "",
-        phoneNumber: "",
-        image: null,
       });
     } catch (error) {
-      console.error(error);
+      alert(error.message);
     }
+    this.setState({
+      displayName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      location: "",
+      profession: "",
+      phoneNumber: "",
+    });
   };
 
   handleChange = (event) => {
     const { name, value } = event.target;
 
-    this.setState({ ...this.state, [name]: value });
+    this.setState({ [name]: value });
   };
 
   render() {
