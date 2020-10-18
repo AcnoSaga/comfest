@@ -1,5 +1,6 @@
 import React from "react";
 import WorkerCard from "../../components/worker-card/worker-card.component";
+import ClipLoader from "react-spinners/ClipLoader";
 import {
   executeQueryAndReturnData,
   firestore,
@@ -7,7 +8,6 @@ import {
 import { cities } from "../../utils/cities";
 import { professions } from "../../utils/professions";
 import "./workpage.styles.css";
-import { Button } from "reactstrap";
 
 const baseQuery = firestore.collection("workers");
 
@@ -22,26 +22,66 @@ class WorkPage extends React.Component {
     };
   }
 
+  async componentDidMount() {
+    executeQueryAndReturnData(this.state.currentQuery).then((data) => {
+      this.setState(
+        {
+          listOfWorkers: data,
+        },
+        () => this.forceUpdate()
+      );
+    });
+    setTimeout(() => this.forceUpdate());
+  }
+
   handleChange = async (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
     this.setState({
-      currentQuery: this.state.currentQuery.where(name, "==", value),
+      currentQuery: baseQuery.where(name, "==", value),
     });
-    this.setState({
-      listOfWorkers: await executeQueryAndReturnData(this.state.currentQuery),
+    console.log(name);
+    console.log(value);
+    executeQueryAndReturnData(this.state.currentQuery).then((data) => {
+      this.setState(
+        {
+          listOfWorkers: data,
+        },
+        () => this.forceUpdate()
+      );
     });
   };
 
   render() {
     return (
-      <div className="work">
-        <WorkerCard
-          name="Suneet Pujan"
-          profession="Plumber"
-          phone="9559197732"
-          location="Lucknow"
-        />
+      <div className="wcard-container">
+        <label>Location:</label>
+        <select id="location" name="location" onChange={this.handleChange}>
+          {cities.map((city) => (
+            <option value={city}>{city}</option>
+          ))}
+        </select>
+
+        <label>Profession:</label>
+        <select id="profession" name="profession" onChange={this.handleChange}>
+          {professions.map((city) => (
+            <option value={city}>{city}</option>
+          ))}
+        </select>
+        {this.state.listOfWorkers == null ? (
+          <ClipLoader size={150} color={"#123abc"} loading={true} />
+        ) : (
+          this.state.listOfWorkers.map((worker) => {
+            return (
+              <WorkerCard
+                name={worker.displayName}
+                profession={worker.profession}
+                phoneNumber={worker.phoneNumber}
+                location={worker.location}
+              />
+            );
+          })
+        )}
       </div>
     );
   }
