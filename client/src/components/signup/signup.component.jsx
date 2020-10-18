@@ -51,7 +51,6 @@ class SignUp extends React.Component {
 			await createUserProfileDocument(user, {
 				displayName,
 				email,
-				password,
 				location,
 				profession,
 				phoneNumber,

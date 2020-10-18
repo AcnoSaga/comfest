@@ -57,7 +57,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 export const executeQueryAndReturnData = async (query) => {
 	const queryResult = await query.get();
-	return queryResult;
+	console.log();
+	return await queryResult.docs.map((doc) => doc.data());
 };
 
 export const addJobPost = async (title, description, phoneNumber, location) => {

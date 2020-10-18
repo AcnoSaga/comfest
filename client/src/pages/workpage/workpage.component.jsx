@@ -1,5 +1,6 @@
 import React from 'react';
 import WorkerCard from '../../components/worker-card/worker-card.component';
+import ClipLoader from 'react-spinners/ClipLoader';
 import {
 	executeQueryAndReturnData,
 	firestore,
@@ -22,23 +23,32 @@ class WorkPage extends React.Component {
 	}
 
 	async componentDidMount() {
-		this.setState({
-			listOfWorkers: await executeQueryAndReturnData(
-				this.state.currentQuery
-			),
+		executeQueryAndReturnData(this.state.currentQuery).then((data) => {
+			this.setState(
+				{
+					listOfWorkers: data,
+				},
+				() => this.forceUpdate()
+			);
 		});
+		setTimeout(() => this.forceUpdate(), );
 	}
 
 	handleChange = async (event) => {
 		const { name, value } = event.target;
 		this.setState({ [name]: value });
 		this.setState({
-			currentQuery: this.state.currentQuery.where(name, '==', value),
+			currentQuery: baseQuery.where(name, '==', value),
 		});
-		this.setState({
-			listOfWorkers: await executeQueryAndReturnData(
-				this.state.currentQuery
-			),
+		console.log(name);
+		console.log(value);
+		executeQueryAndReturnData(this.state.currentQuery).then((data) => {
+			this.setState(
+				{
+					listOfWorkers: data,
+				},
+				() => this.forceUpdate()
+			);
 		});
 	};
 
@@ -66,24 +76,20 @@ class WorkPage extends React.Component {
 						<option value={city}>{city}</option>
 					))}
 				</select>
-				<WorkerCard
-					name='Suneet Pujan'
-					profession='Plumber'
-					phone='9559197732'
-					location='Lucknow'
-				/>
-				<WorkerCard
-					name='Suneet Pujan'
-					profession='Plumber'
-					phone='9559197732'
-					location='Lucknow'
-				/>
-				<WorkerCard
-					name='Suneet Pujan'
-					profession='Plumber'
-					phone='9559197732'
-					location='Lucknow'
-				/>
+				{this.state.listOfWorkers == null ? (
+					<ClipLoader size={150} color={'#123abc'} loading={true} />
+				) : (
+					this.state.listOfWorkers.map((worker) => {
+						return (
+							<WorkerCard
+								name={worker.displayName}
+								profession={worker.profession}
+								phoneNumber={worker.phoneNumber}
+								location={worker.location}
+							/>
+						);
+					})
+				)}
 			</div>
 		);
 	}
