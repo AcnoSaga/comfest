@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/storage';
 
 const config = {
 	apiKey: 'AIzaSyC_0_yxIwxYnp9C_CxClXSIqVjuFAefnY0',
@@ -26,14 +27,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 	if (!snapShot.exists) {
 		const { displayName, email } = userAuth;
 		const createdAt = new Date();
-		if (additionalData.image !== undefined) {
-			const imageUpoadResult = await firebase
-				.storage()
-				.ref()
-				.put(additionalData.image);
-			additionalData.imageUrl = await imageUpoadResult.ref.getDownloadURL();
-			delete additionalData.image;
-		}
+
 		try {
 			await userRef.set({
 				displayName,
