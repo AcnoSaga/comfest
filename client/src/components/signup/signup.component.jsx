@@ -77,11 +77,17 @@ class SignUp extends React.Component {
   handleChange = (event) => {
     const { name, value } = event.target;
 
-    this.setState({ [name]: value });
+    this.setState({ ...this.state, [name]: value });
   };
 
   render() {
-    const { displayName, email, password, confirmPassword } = this.state;
+    const {
+      displayName,
+      email,
+      password,
+      confirmPassword,
+      phoneNumber,
+    } = this.state;
     return (
       <div className="sign-up">
         <h1>I do not have an account</h1>
@@ -157,6 +163,17 @@ class SignUp extends React.Component {
               onChange={this.handleChange}
               label="Confirm Password"
               placeholder="Confirm Password"
+              required
+            />
+            <br />
+            <Input
+              className="input"
+              type="text"
+              name="phoneNumber"
+              value={phoneNumber}
+              onChange={this.handleChange}
+              label="Phone Number"
+              placeholder="Phone Number"
               required
             />
             <br />
