@@ -48,11 +48,9 @@ class SignUp extends React.Component {
         password
       );
 
-<<<<<<< HEAD
       await createUserProfileDocument(user, {
         displayName,
         email,
-        password,
         location,
         profession,
         phoneNumber,
@@ -70,28 +68,6 @@ class SignUp extends React.Component {
       phoneNumber: "",
     });
   };
-=======
-			await createUserProfileDocument(user, {
-				displayName,
-				email,
-				location,
-				profession,
-				phoneNumber,
-			});
-		} catch (error) {
-			alert(error.message);
-		}
-		this.setState({
-			displayName: '',
-			email: '',
-			password: '',
-			confirmPassword: '',
-			location: '',
-			profession: '',
-			phoneNumber: '',
-		});
-	};
->>>>>>> df855fd5ba35da581369fe48f302e8996e83ffcb
 
   handleChange = (event) => {
     const { name, value } = event.target;
