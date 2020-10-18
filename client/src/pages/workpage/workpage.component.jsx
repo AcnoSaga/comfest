@@ -21,6 +21,14 @@ class WorkPage extends React.Component {
 		};
 	}
 
+	async componentDidMount() {
+		this.setState({
+			listOfWorkers: await executeQueryAndReturnData(
+				this.state.currentQuery
+			),
+		});
+	}
+
 	handleChange = async (event) => {
 		const { name, value } = event.target;
 		this.setState({ [name]: value });
@@ -30,7 +38,7 @@ class WorkPage extends React.Component {
 		this.setState({
 			listOfWorkers: await executeQueryAndReturnData(
 				this.state.currentQuery
-			), 
+			),
 		});
 	};
 

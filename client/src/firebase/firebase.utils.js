@@ -35,6 +35,18 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 				createdAt,
 				...additionalData,
 			});
+			if (
+				additionalData.profession !== undefined &&
+				additionalData.profession !== null
+			) {
+				const workerRef = firestore.doc(`workers/${userAuth.uid}`);
+				await workerRef.set({
+					displayName,
+					email,
+					createdAt,
+					...additionalData,
+				});
+			}
 		} catch (error) {
 			console.log('error creating user', error.message);
 		}
@@ -46,6 +58,16 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 export const executeQueryAndReturnData = async (query) => {
 	const queryResult = await query.get();
 	return queryResult;
+};
+
+export const addJobPost = async (title, description, phoneNumber, location) => {
+	const postRef = firestore.collection('jobs').doc();
+	await postRef.set({
+		title,
+		description,
+		phoneNumber,
+		location,
+	});
 };
 
 export const auth = firebase.auth();
