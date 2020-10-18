@@ -1,0 +1,30 @@
+.box {
+  display: inline-block;
+  width: 40%;
+  height: 500px;
+  background-color: #f4e08e;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ntext {
+  margin-top: 50px;
+  font-size: 50px;
+  text-align: center;
+}
+.mtext {
+  font-size: 150px;
+  text-align: center;
+}
+
+.boxes button {
+  border: none;
+  text-align: center;
+  width: 70%;
+  height: 30%;
+  background-color: white;
+  font-size: 100px;
+  font-family: "Bebas Neue";
+
+  color: #251d33;
+}

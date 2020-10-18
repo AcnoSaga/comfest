@@ -1,0 +1,17 @@
+.sign-up {
+	padding: 0 150px 50px 150px;
+}
+
+.sign-up h2 {
+	font: 'Bebas Neue';
+	font-size: 20px;
+	padding: 10px 0;
+}
+
+.input {
+	padding: 20px;
+}
+
+.label {
+	color: blanchedalmond;
+}

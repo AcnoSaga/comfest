@@ -1,0 +1,13 @@
+.work-card {
+  margin: 0px 200px;
+}
+
+.worker-card {
+  background-color: #f4e08e;
+  padding: 20px 50px;
+}
+
+.worker-card h1,
+.worker-card h2 {
+  color: #251d33;
+}

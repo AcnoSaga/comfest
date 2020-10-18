@@ -1,0 +1,129 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #251d33;
+}
+
+.logo {
+  margin: 20px 10px 10px 40px;
+  cursor: pointer;
+}
+.logo img {
+  width: 50px;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #fff;
+  font-family: "Bebas Neue";
+}
+
+.mainlogo {
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+.mainlogo img {
+  display: block;
+  margin: auto;
+  margin-top: 200px;
+  margin-bottom: 100px;
+  width: 80%;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  z-index: -1;
+}
+#sec-2 {
+  width: 100%;
+}
+.tagline {
+  margin-top: 20px;
+}
+.tagline h1 {
+  font-size: 55px;
+  text-align: center;
+}
+.tagline img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 55%;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.boxes {
+  display: flex;
+  margin-top: 400px;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.slider {
+  margin-top: 50px;
+}
+.bg {
+  background-image: url("../../assets/backimg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  height: 300px;
+}
+.bg h1 {
+  color: #251d33;
+  text-align: center;
+  font-size: 80px;
+}
+.help h1 {
+  margin-top: 50px;
+  font-size: 100px;
+  text-align: center;
+}
+.boxes2 {
+  display: flex;
+  padding: 50px 150px;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.footer {
+  background-color: #555555;
+  height: 200px;
+}
+.footer img {
+  width: 400px;
+  height: auto;
+}
+.ftext {
+  text-align: center;
+  color: white;
+  padding: 30px;
+  opacity: 50%;
+}
+.fbox {
+  display: flex;
+}
+.fbox h2 {
+  font-size: 40px;
+  margin: 0px auto;
+  margin-top: 50px;
+  text-align: center;
+}
