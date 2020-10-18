@@ -6,11 +6,12 @@ import {
   ModalBody,
   ModalFooter,
   Form,
+  FormGroup,
+  Label,
+  Input,
 } from "reactstrap";
 
-const JobsPage = (props) => {
-  const { buttonLabel, className } = props;
-
+const JobsPage = () => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
@@ -18,17 +19,21 @@ const JobsPage = (props) => {
   return (
     <div>
       <Button color="danger" onClick={toggle}>
-        {buttonLabel}
+        Post Job
       </Button>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
+      <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Create Job</ModalHeader>
         <ModalBody>
-          <Form></Form>
+          <Form>
+            <Input />
+            <FormGroup>
+              <Label for="exampleText">Job Description</Label>
+              <Input type="textarea" name="text" id="exampleText" />
+            </FormGroup>
+            <Button color="warning" />
+          </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
-            Submit
-          </Button>
           <Button color="secondary" onClick={toggle}>
             Cancel
           </Button>

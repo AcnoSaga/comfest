@@ -119,9 +119,6 @@ class SignUp extends React.Component {
             </FormGroup>
           </FormGroup>
           <FormGroup>
-            <Label className="label">Display Picture:</Label>
-            <Input type="file" name="image" onChange={this.handleChange} />
-            <br />
             <Input
               className="input"
               type="text"
