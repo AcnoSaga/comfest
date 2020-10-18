@@ -51,7 +51,18 @@ class App extends React.Component {
 					<Route exact path='/work' component={WorkPage} />
 					<Route exact path='/jobs' component={JobsPage} />
 					<Route exact path='/explore' component={JobFindingPage} />
-					<Route path='/account' component={RegisterPage} />
+					<Route
+						exact
+						path='/account'
+						render={() =>
+							this.props.currentUser === null ||
+							this.props.currentUser === undefined ? (
+								<RegisterPage />
+							) : (
+								<Redirect to='/' />
+							)
+						}
+					/>
 				</Switch>
 			</div>
 		);
