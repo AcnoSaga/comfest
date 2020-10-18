@@ -1,4 +1,8 @@
 .create-job {
-  padding: 200px;
+  padding: 100px;
   text-align: center;
+}
+
+.job-button {
+  margin: 50px auto;
 }
