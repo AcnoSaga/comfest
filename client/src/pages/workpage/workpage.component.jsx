@@ -8,6 +8,7 @@ import {
 import { cities } from '../../utils/cities';
 import { professions } from '../../utils/professions';
 import './workpage.styles.css';
+import { Button } from 'reactstrap';
 
 const baseQuery = firestore.collection('workers');
 
@@ -16,22 +17,17 @@ class WorkPage extends React.Component {
 		super();
 		this.state = {
 			listOfWorkers: null,
-			currentQuery: baseQuery,
 			location: '',
 			profession: '',
 		};
 	}
 
 	async componentDidMount() {
-		executeQueryAndReturnData(this.state.currentQuery).then((data) => {
-			this.setState(
-				{
-					listOfWorkers: data,
-				},
-				() => this.forceUpdate()
-			);
+		executeQueryAndReturnData(baseQuery).then((data) => {
+			this.setState({
+				listOfWorkers: data,
+			});
 		});
-		setTimeout(() => this.forceUpdate(), );
 	}
 
 	handleChange = async (event) => {
@@ -42,40 +38,16 @@ class WorkPage extends React.Component {
 		});
 		console.log(name);
 		console.log(value);
-		executeQueryAndReturnData(this.state.currentQuery).then((data) => {
-			this.setState(
-				{
-					listOfWorkers: data,
-				},
-				() => this.forceUpdate()
-			);
+		executeQueryAndReturnData(baseQuery).then((data) => {
+			this.setState({
+				listOfWorkers: data,
+			});
 		});
 	};
 
 	render() {
 		return (
 			<div className='wcard-container'>
-				<label>Location:</label>
-				<select
-					id='location'
-					name='location'
-					onChange={this.handleChange}
-				>
-					{cities.map((city) => (
-						<option value={city}>{city}</option>
-					))}
-				</select>
-
-				<label>Profession:</label>
-				<select
-					id='profession'
-					name='profession'
-					onChange={this.handleChange}
-				>
-					{professions.map((city) => (
-						<option value={city}>{city}</option>
-					))}
-				</select>
 				{this.state.listOfWorkers == null ? (
 					<ClipLoader size={150} color={'#123abc'} loading={true} />
 				) : (
