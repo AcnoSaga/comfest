@@ -25,5 +25,7 @@ export const registerUser = functions.https.onCall(async (data, context) => {
         type: data.type,
     });
 
+    
+
     return await userRef.get();
 });

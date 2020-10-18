@@ -4,3 +4,4 @@ admin.initializeApp();
 
 
 export { registerUser } from './register/registerUser';
+export { updateInfo } from './update/updateInfo';

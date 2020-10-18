@@ -7,7 +7,7 @@ import { stringDataValidator } from '../handlers/stringData';
 export const updateInfo = functions.https.onCall(async (data, context) => {
     try {
         authHandler(context);
-        stringDataValidator(data.displayName, data.imageUrl, data.phoneNumber, data.description);
+        stringDataValidator(data.displayName, data.phoneNumber, data.description);
     } catch (err) {
         throw err;
     }
@@ -15,7 +15,6 @@ export const updateInfo = functions.https.onCall(async (data, context) => {
         const userRef = admin.firestore().collection('users').doc(context.auth!.uid);
         const userData: any = {
             displayName: data.displayName,
-            imageUrl: data.imageUrl,
             phoneNumber: data.phoneNumber,
             description: data.description,
         };
