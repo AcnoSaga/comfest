@@ -1,12 +1,11 @@
 import React from "react";
 
-// import FormInput from "../form-input/form-input.component";
-// import CustomButton from "../custom-button/custom-button.component";
-
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 import { cities } from "../../utils/cities";
+import { professions } from "../../utils/professions";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-// import { SignUpContainer, SignUpTitle } from "./sign-up.styles";
+import "./sign-up.styles.css";
 
 class SignUp extends React.Component {
   constructor() {
@@ -20,6 +19,8 @@ class SignUp extends React.Component {
       location: "",
       profession: "",
       phoneNumber: "",
+      image: null,
+      fieldEnable: true,
     };
   }
 
@@ -34,6 +35,7 @@ class SignUp extends React.Component {
       location,
       profession,
       phoneNumber,
+      image,
     } = this.state;
 
     if (password !== confirmPassword) {
@@ -54,6 +56,7 @@ class SignUp extends React.Component {
         location,
         profession,
         phoneNumber,
+        image,
       });
 
       this.setState({
@@ -64,6 +67,7 @@ class SignUp extends React.Component {
         location: "",
         profession: "",
         phoneNumber: "",
+        image: null,
       });
     } catch (error) {
       console.error(error);
@@ -79,62 +83,115 @@ class SignUp extends React.Component {
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
     return (
-      <div>
-        <h1>I do not have a account</h1>
-        <span>Sign up with your email and password</span>
-        <form className="sign-up-form" onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="displayName"
-            value={displayName}
-            onChange={this.handleChange}
-            label="Display Name"
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-            label="Email"
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-            label="Password"
-            required
-          />
-          <input
-            type="password"
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={this.handleChange}
-            label="Confirm Password"
-            required
-          />
-          <label>Location:</label>
-          <select id="location" name="location" onChange={this.handleChange}>
-            {cities.map((city) => (
-              <option value={city}>{city}</option>
-            ))}
-          </select>
+      <div className="sign-up">
+        <h1>I do not have an account</h1>
+        <h2>Create an Account</h2>
 
-          <label>Profession:</label>
-          <select
-            id="profession"
-            name="profession"
-            onChange={this.handleChange}
-          >
-            {cities.map((city) => (
-              <option value={city}>{city}</option>
-            ))}
-          </select>
+        <Form className="sign-up-form" onSubmit={this.handleSubmit}>
+          <FormGroup tag="fieldset">
+            <Label className="label">Register as</Label>
+            <FormGroup check>
+              <Label check>
+                <Input
+                  type="radio"
+                  name="radio1"
+                  defaultChecked
+                  onClick={() => this.setState({ fieldEnable: true })}
+                />
+                <h2>Worker</h2>
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input
+                  type="radio"
+                  name="radio1"
+                  onClick={() => this.setState({ fieldEnable: !true })}
+                />
+                <h2>Employer</h2>
+              </Label>
+            </FormGroup>
+          </FormGroup>
+          <FormGroup>
+            <Label className="label">Display Picture:</Label>
+            <Input type="file" name="image" onChange={this.handleChange} />
+            <br />
+            <Input
+              className="input"
+              type="text"
+              name="displayName"
+              value={displayName}
+              onChange={this.handleChange}
+              label="Display Name"
+              placeholder="Enter your Name"
+              required
+            />
+            <br />
+            <Input
+              className="input"
+              type="email"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+              label="Email"
+              placeholder="Enter your Email"
+              required
+            />
+            <br />
+            <Input
+              className="input"
+              type="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+              label="Password"
+              placeholder="Enter a Password"
+              required
+            />
+            <br />
+            <Input
+              className="input"
+              type="password"
+              name="confirmPassword"
+              value={confirmPassword}
+              onChange={this.handleChange}
+              label="Confirm Password"
+              placeholder="Confirm Password"
+              required
+            />
+            <br />
+            <Label className="label">Location:</Label>
+            <Input
+              className="input"
+              type="select"
+              id="location"
+              name="location"
+              onChange={this.handleChange}
+            >
+              {cities.map((city) => (
+                <option value={city}>{city}</option>
+              ))}
+            </Input>
+            <br />
+            <Label className="label">Profession:</Label>
+            <Input
+              className="input"
+              type="select"
+              id="profession"
+              name="profession"
+              onChange={this.handleChange}
+              disabled={!this.state.fieldEnable}
+            >
+              {professions.map((profession) => (
+                <option value={profession}>{profession}</option>
+              ))}
+            </Input>
+          </FormGroup>
 
-          <button type="submit">SIGN UP</button>
-        </form>
+          <Button color="warning" type="submit">
+            Sign up
+          </Button>
+        </Form>
       </div>
     );
   }

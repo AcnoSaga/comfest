@@ -1,0 +1,13 @@
+.sign-in {
+  padding: 150px 150px 80px 150px;
+}
+
+.sign-in h2 {
+  font: "Bebas Neue";
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+.input {
+  padding: 20px;
+}

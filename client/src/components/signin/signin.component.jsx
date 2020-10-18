@@ -1,15 +1,9 @@
 import React from "react";
 
-// import FormInput from '../form-input/form-input.component';
-// import CustomButton from '../custom-button/custom-button.component';
+import "./signin.styles.css";
 
 import { auth } from "../../firebase/firebase.utils";
-
-// import {
-//   SignInContainer,
-//   SignInTitle,
-//   ButtonsBarContainer
-// } from './sign-in.styles';
+import { Button, Form, FormGroup, Input } from "reactstrap";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -42,29 +36,39 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="sign-in">
         <h1>I already have an account</h1>
-        <span>Sign in with your email and password</span>
+        <h2>Login with your Email</h2>
 
-        <form onSubmit={this.handleSubmit}>
-          <input
-            name="email"
-            type="email"
-            handleChange={this.handleChange}
-            value={this.state.email}
-            label="email"
-            required
-          />
-          <input
-            name="password"
-            type="password"
-            value={this.state.password}
-            handleChange={this.handleChange}
-            label="password"
-            required
-          />
-          <button type="submit"> Sign in </button>
-        </form>
+        <Form onSubmit={this.handleSubmit}>
+          <FormGroup>
+            <Input
+              name="email"
+              type="email"
+              handleChange={this.handleChange}
+              value={this.state.email}
+              label="email"
+              placeholder="Email"
+              className="input"
+              required
+            />
+            <br />
+            <Input
+              name="password"
+              type="password"
+              value={this.state.password}
+              handleChange={this.handleChange}
+              label="password"
+              placeholder="Password"
+              className="input"
+              required
+            />
+          </FormGroup>
+
+          <Button outline color="warning" type="submit" className="button">
+            Sign in
+          </Button>
+        </Form>
       </div>
     );
   }

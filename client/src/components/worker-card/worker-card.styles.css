@@ -1,14 +1,3 @@
-body {
-  background-color: #251d33;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  color: #555555;
-  font-family: "Bebas Neue";
-}
 .cbody {
   height: 375px;
   width: 1000px;

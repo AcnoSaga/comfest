@@ -5,7 +5,6 @@ import SignIn from "../../components/signin/signin.component";
 function RegisterPage() {
   return (
     <div>
-      <h1>Account</h1>
       <SignIn />
       <SignUp />
     </div>
