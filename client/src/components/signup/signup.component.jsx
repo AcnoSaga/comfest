@@ -172,7 +172,9 @@ class SignUp extends React.Component {
 							required
 						/>
 						<br />
-						<Label className='label'>Location:</Label>
+						<Label className='label'>
+							Location: {this.state.location}
+						</Label>
 						<Input
 							className='input'
 							type='select'
@@ -185,7 +187,9 @@ class SignUp extends React.Component {
 							))}
 						</Input>
 						<br />
-						<Label className='label'>Profession:</Label>
+						<Label className='label'>
+							Profession: {this.state.profession}
+						</Label>
 						<Input
 							className='input'
 							type='select'
