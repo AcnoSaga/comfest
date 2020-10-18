@@ -1,3 +1,4 @@
+import { auth } from 'firebase';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -29,7 +30,8 @@ function Header({ currentUser }) {
 							</li>
 						</div>
 					) : currentUser.profession !== undefined &&
-					  currentUser.profession !== null ? (
+					  currentUser.profession !== null &&
+					  currentUser.profession !== '' ? (
 						<div>
 							<li>
 								<Link to='/'>Home</Link>
@@ -39,10 +41,14 @@ function Header({ currentUser }) {
 							</li>
 
 							<li>
-								<Link to='/work'>Work</Link>
+								<Link to='/explore'>Explore</Link>
 							</li>
 							<li>
-								<Link to='/account'>Account</Link>
+								<Link
+									onClick={async () => await auth().signOut()}
+								>
+									Sign Out
+								</Link>
 							</li>
 						</div>
 					) : (
@@ -61,7 +67,11 @@ function Header({ currentUser }) {
 								<Link to='/jobs'>Jobs</Link>
 							</li>
 							<li>
-								<Link to='/account'>Account</Link>
+								<Link
+									onClick={async () => await auth().signOut()}
+								>
+									Sign Out
+								</Link>
 							</li>
 						</div>
 					)}
