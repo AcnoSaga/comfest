@@ -4,7 +4,6 @@ import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 import { cities } from "../../utils/cities";
 import { professions } from "../../utils/professions";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { ImagePicker } from "react-file-picker";
 
 import "./sign-up.styles.css";
 
@@ -51,7 +50,6 @@ class SignUp extends React.Component {
       await createUserProfileDocument(user, {
         displayName,
         email,
-        password,
         location,
         profession,
         phoneNumber,
